@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import { lazy,Suspense } from "react";
-const Home = lazy(() => import('../pages/Home'));
-const Detail = lazy(() => import('../pages/Detail'));
+const Home = lazy(() => import('@/pages/Home'));
+const Detail = lazy(() => import('@/pages/Detail'));
 
 
 const router = createBrowserRouter([
