@@ -1,13 +1,11 @@
 import axios from "axios";
 
 const http = axios.create({
-    baseURL: 'https://geek.itheima.net', // 基础url，解决跨域，部署项目时，需要根据实际情况修改
+    baseURL: 'https://geek.itheima.net/v1_0', // 基础url，解决跨域，部署项目时，需要根据实际情况修改
     timeout: 5000 // 超时时间
 });
 
 http.interceptors.request.use((config) => {
-
-
 
     return config
 }, (error) => {
