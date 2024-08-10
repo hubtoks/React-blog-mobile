@@ -1,21 +1,21 @@
 import {http} from '@/utils'
 
-type Restype<T> = {   // 定义一个泛型接口,<T>表示可以接受任意类型,之后传什么就是什么
+type Restype<T> = {   
     message: string,
     data: T,
 }
 
-//定义具体的接口类型
-type ChannalItem = {
+// 定义具体的接口类型
+export type ChannelItem = {
     id: number,
     name: string,
 }
-type ChannalRes = {
-    channels: ChannalItem[],
+export type ChannelRes = {
+    channels: ChannelItem[],
 }
 
-export function getChannalAPI() {
-    return http.request<Restype<ChannalRes>>({
+export function getChannelAPI() {
+    return http.request<Restype<ChannelRes>>({
         url: '/channels',
     })
 }
