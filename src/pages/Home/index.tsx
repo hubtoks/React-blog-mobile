@@ -1,32 +1,25 @@
-import { getChannelAPI } from "@/apis/list"
-import { useEffect, useState } from "react"
+
 import './index.css'
-import type { ChannelItem,ChannelRes } from "@/apis/list"
+import { useTabs } from '@/hooks/useTabs'
+import { HomeList } from './comp/HomeList'
 import { Tabs } from "antd-mobile"
+import { useState } from 'react'
 
 const Home = () => {
-    const [channelList, setChannelList] = useState<ChannelItem[]>([]);
-    useEffect(() => {
-        const getChannel = async () => {
-            try {
-                const res = await getChannelAPI();
-                const channelData = (res.data as unknown as ChannelRes).channels;//需要类型断言，不然会标红
-                setChannelList(channelData);
-            } catch (error) {
-                console.error('获取频道列表失败', error);
-            }
-        };
-
-        getChannel();
-    }, []);
+    const { channelList } = useTabs()
+    const [active, setActive] = useState('0')
+    
     return (
         <div>
             <div className="tab">
-                <Tabs>
-                    {channelList.map((item) => (<Tabs.Tab title={item.name} key={item.id}></Tabs.Tab>
-                    ))
-                    }
+                <Tabs defaultActiveKey={active}>
+                    {channelList.map((item) => (
+                        <Tabs.Tab title={item.name} key={item.id} >
+                        <HomeList channel_id={''+item.id}/>  {/*起点，将频道列表中的id作为字符串，传给HomeList组件*/}
+                        </Tabs.Tab>))}
+                    
                 </Tabs>
+                
             </div>
         </div>
     )
