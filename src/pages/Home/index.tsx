@@ -15,7 +15,9 @@ const Home = () => {
                 <Tabs defaultActiveKey={active}>
                     {channelList.map((item) => (
                         <Tabs.Tab title={item.name} key={item.id} >
+                         <div className='list'> 
                         <HomeList channel_id={''+item.id}/>  {/*起点，将频道列表中的id作为字符串，传给HomeList组件*/}
+                        </div>  
                         </Tabs.Tab>))}
                     
                 </Tabs>
