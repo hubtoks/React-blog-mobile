@@ -1,6 +1,6 @@
 import {http} from '@/utils'
 
-type Restype<T> = {   
+export type Restype<T> = {   
     message: string,
     data: T,
 }
@@ -22,7 +22,7 @@ export function getChannelAPI() {
 }
 
 // 定义具体的接口类型,请求文章列表
-type ListItem = {
+export type ListItem = {
     art_id: string,
     title: string,
     aut_id: string,
@@ -50,3 +50,4 @@ export function getListAPI(params:Params) {
         params,
     })
 }
+

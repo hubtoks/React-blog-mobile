@@ -3,7 +3,7 @@ import { List, Image,InfiniteScroll } from 'antd-mobile'
 import { useEffect, useState } from 'react'
 import { getListAPI } from "@/apis/list"
 import type { ListRes } from "@/apis/list"
-
+import { useNavigate } from 'react-router-dom'
 
 
 const HomeList = (props: { channel_id: string }) => {  //HomeList组件接受一个channel_id作为参数，用于获取对应频道下的文章列表
@@ -64,6 +64,10 @@ const HomeList = (props: { channel_id: string }) => {  //HomeList组件接受一
         }
     }
 
+    const navigate = useNavigate()
+    const onClick = (id:string)=>{
+        navigate(`/detail?id=${id}`)
+    }
     
     return (
 
@@ -81,7 +85,8 @@ const HomeList = (props: { channel_id: string }) => {  //HomeList组件接受一
                             height={40}
                         />
                     }
-                    description={item.pubdate}>
+                    description={item.pubdate}
+                    onClick={()=>onClick(item.art_id)}>
                     {item.title}
                 </List.Item>
             ))}

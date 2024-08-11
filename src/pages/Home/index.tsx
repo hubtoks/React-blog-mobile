@@ -3,16 +3,15 @@ import './index.css'
 import { useTabs } from '@/hooks/useTabs'
 import { HomeList } from './comp/HomeList'
 import { Tabs } from "antd-mobile"
-import { useState } from 'react'
+
 
 const Home = () => {
     const { channelList } = useTabs()
-    const [active, setActive] = useState('0')
     
     return (
         <div>
             <div className="tab">
-                <Tabs defaultActiveKey={active}>
+                <Tabs defaultActiveKey={'0'} >
                     {channelList.map((item) => (
                         <Tabs.Tab title={item.name} key={item.id} >
                          <div className='list'> 
